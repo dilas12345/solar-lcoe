@@ -1,0 +1,37 @@
+<head>
+  <title>LCOE Calculator List</title>
+</head>
+
+<body>
+<div class="container" ng-app="simple-todos" ng-controller="TodosListCtrl">
+
+  <header>
+    <h1>Solar LCOE Calculator</h1>
+  </header>
+
+		<label>Project Life (Years)</label>
+        <input ng-model="parameters.project_life"></input>
+        <label>Nameplate MW</label>
+        <input ng-model="parameters.nameplate_MW"></input>
+        <label>Module Cost ($/W)</label>
+        <input ng-model="parameters.module_cost"></input>
+        <label>Inverter Cost ($/W)</label>
+        <input ng-model="parameters.inverter_cost"></input>
+        <label>Yearly Fixed O&M Cost ($)</label>
+        <input ng-model="parameters.operation_maintenance_fixed"></input>
+        <label>Plant Derating Factor (fraction)</label>
+        <input ng-model="parameters.plant_derating_factor"></input>
+        <label>Plant Degradation Factor (fraction)</label>
+        <input ng-model="parameters.plant_degradation_factor"></input>
+        <label>Discount Rate (fraction) </label>
+        <input ng-model="parameters.discount_rate"></input>
+        <label>Corporate Tax (fraction)</label>
+        <input ng-model="parameters.corporate_tax"></input>
+        <label>Average Peak Sun Hours per Day</label>
+        <input ng-model="parameters.av_psh_per_day"></input>
+    	</br>
+  		<button class="btn-sml" ng-click="calculate()">Calculate</button>
+
+  		<h4>LCOE: {{lcoe}} $/MWh</h4>
+</div>
+</body>
