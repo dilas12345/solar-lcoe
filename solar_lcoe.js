@@ -3,9 +3,9 @@
 if (Meteor.isClient) {
  
   // This code only runs on the client
-  angular.module('simple-todos',['angular-meteor']);
+  angular.module('lcoe-calculator',['angular-meteor']);
  
-  angular.module('simple-todos').controller('TodosListCtrl', ['$scope',
+  angular.module('lcoe-calculator').controller('LCOE-Calculator', ['$scope',
     function ($scope) {
       $scope.parameters = {
         project_life: 20, 

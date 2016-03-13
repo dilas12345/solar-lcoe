@@ -3,35 +3,77 @@
 </head>
 
 <body>
-<div class="container" ng-app="simple-todos" ng-controller="TodosListCtrl">
+<div class="container" ng-app="lcoe-calculator" ng-controller="LCOE-Calculator">
 
-  <header>
-    <h1>Solar LCOE Calculator</h1>
-  </header>
+	<header>
+		<h1>Solar PV LCOE Calculator</h1>
+	</header>
 
-		<label>Project Life (Years)</label>
-        <input ng-model="parameters.project_life"></input>
-        <label>Nameplate MW</label>
-        <input ng-model="parameters.nameplate_MW"></input>
-        <label>Module Cost ($/W)</label>
-        <input ng-model="parameters.module_cost"></input>
-        <label>Inverter Cost ($/W)</label>
-        <input ng-model="parameters.inverter_cost"></input>
-        <label>Yearly Fixed O&M Cost ($)</label>
-        <input ng-model="parameters.operation_maintenance_fixed"></input>
-        <label>Plant Derating Factor (fraction)</label>
-        <input ng-model="parameters.plant_derating_factor"></input>
-        <label>Plant Degradation Factor (fraction)</label>
-        <input ng-model="parameters.plant_degradation_factor"></input>
-        <label>Discount Rate (fraction) </label>
-        <input ng-model="parameters.discount_rate"></input>
-        <label>Corporate Tax (fraction)</label>
-        <input ng-model="parameters.corporate_tax"></input>
-        <label>Average Peak Sun Hours per Day</label>
-        <input ng-model="parameters.av_psh_per_day"></input>
-    	</br>
-  		<button class="btn-sml" ng-click="calculate()">Calculate</button>
+	<p>This calculator finds the estimated levelised cost of electricity (LCOE) for utility-scale photovoltaic power plants.</br> Source code for this website and the calculator can be found <a href="https://github.com/lukasmarshall/solar-lcoe">here. </a></p>
+	</br>
 
-  		<h4>LCOE: {{lcoe}} $/MWh</h4>
+	<div class="input-group">
+		<div class="col-md-4">
+		<fieldset class="form-group">
+			<label for='project_life' >Project Life (Years)</label>
+			<input class="form-control" id='project_life' ng-model="parameters.project_life" ></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='nameplate_MW' >Nameplate MW</label>
+			<input class="form-control" id='nameplate_MW' ng-model="parameters.nameplate_MW"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='module_cost' >Module Cost ($/W)</label>
+			<input class="form-control" id='module_cost' ng-model="parameters.module_cost"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='inverter_cost' >Inverter Cost ($/W)</label>
+			<input class="form-control" id='inverter_cost' ng-model="parameters.inverter_cost"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+		<label for='operation_maintenance_fixed' >Yearly Fixed O&M Cost ($)</label>
+			<input class="form-control" id='operation_maintenance_fixed' ng-model="parameters.operation_maintenance_fixed"></input>
+		</fieldset>
+		</div>
+		<div class="col-md-4">
+		<fieldset class="form-group">
+			<label for='plant_derating_factor' >Plant Derating Factor (fraction)</label>
+			<input class="form-control" id='plant_derating_factor' ng-model="parameters.plant_derating_factor"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='plant_degradation_factor' >Plant Degradation Factor (fraction)</label>
+			<input class="form-control" id='plant_degradation_factor' ng-model="parameters.plant_degradation_factor"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='discount_rate' >Discount Rate (fraction) </label>
+			<input class="form-control" id='discount_rate' ng-model="parameters.discount_rate"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='corporate_tax' >Corporate Tax (fraction)</label>
+			<input class="form-control" id='corporate_tax' ng-model="parameters.corporate_tax"></input>
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label for='av_psh_per_day' >Average Peak Sun Hours per Day</label>
+			<input class="form-control" id='av_psh_per_day' ng-model="parameters.av_psh_per_day"></input>
+		</fieldset>
+
+		</div>
+		
+	</div>
+	<div class="col-md-4">
+	<button class="btn btn-default" ng-click="calculate()">Calculate</button>
+	<h4>LCOE: {{lcoe}} $/MWh</h4>
+	</div>
+  		
 </div>
+
 </body>
+
