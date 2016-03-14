@@ -10,9 +10,10 @@ if (Meteor.isClient) {
       $scope.parameters = {
         project_life: 20, 
         nameplate_MW: 1,          
-        module_cost: 0.39,          
-        inverter_cost: 0.15,          
-        operation_maintenance_fixed: 25000,          
+        module_cost: 0.40,          
+        inverter_cost: 0.15, 
+        bos_cost: 1.22,         
+        operation_maintenance_fixed: 25377,          
         plant_derating_factor: 0.85,
         plant_degradation_factor: 0.01,           
         discount_rate: 0.1,         
@@ -31,14 +32,7 @@ if (Meteor.isClient) {
         // Set the lcoe threshold on the page
         $scope.lcoe = lcoe_threshold;
       }
-
-
-    
-      $scope.tasks = [
-        { text: 'This is task 1' },
-        { text: 'This is task 2' },
-        { text: 'This is task 3' }
-      ];
+      $scope.calculate();
  
   }]);
 }
@@ -53,7 +47,7 @@ function calculateLCOE(parameters){
   var p = parameters;
   // Calculate Plant Cap Cost
   var nameplate_watts = 1000000 * p.nameplate_MW;
-  var capital_cost = nameplate_watts * (p.module_cost + p.inverter_cost)
+  var capital_cost = nameplate_watts * (p.module_cost + p.inverter_cost + p.bos_cost)
   //Calculate plant yearly cash outflows
   var yearly_capital_cost = capital_cost / p.project_life;
   var yearly_cash_outflows = yearly_capital_cost + p.operation_maintenance_fixed;

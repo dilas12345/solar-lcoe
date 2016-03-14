@@ -6,6 +6,10 @@ Based on Branker et al. 2011 with addition for flat corporate tax.
 Original paper can be found here (http://www.sciencedirect.com.au/science/article/pii/S1364032111003492)
 We have no affiliation with the authors of this work. This calculator is intended as a learning tool only.
 
+Written by Luke Marshall 2016, released under MIT License (https://opensource.org/licenses/MIT)
+
+Site is active at www.solarlcoe.com.
+
 ##Requirements
 Meteor (https://www.meteor.com/install)
 

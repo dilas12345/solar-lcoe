@@ -1,76 +1,127 @@
 <head>
-  <title>LCOE Calculator List</title>
+	<title>LCOE Calculator</title>
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
 <div class="container" ng-app="lcoe-calculator" ng-controller="LCOE-Calculator">
 
 	<header>
-		<h1>Solar PV LCOE Calculator</h1>
+		<h1><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>     Solar PV LCOE Calculator</h1>
 	</header>
 
-	<p>This calculator finds the estimated levelised cost of electricity (LCOE) for utility-scale photovoltaic power plants.</br> Source code for this website and the calculator can be found <a href="https://github.com/lukasmarshall/solar-lcoe">here. </a></p>
+	<p>This calculator finds the estimated levelised cost of electricity (LCOE) for utility-scale photovoltaic power plants.</br> Source code for this website and the calculator can be found <a href="https://github.com/lukasmarshall/solar-lcoe">here.</a></p>
 	</br>
 
 	<div class="input-group">
 		<div class="col-md-4">
 		<fieldset class="form-group">
-			<label for='project_life' >Project Life (Years)</label>
-			<input class="form-control" id='project_life' ng-model="parameters.project_life" ></input>
+			<form ng-submit="calculate()">
+				<label for='project_life' >Project Life (Years)</label>
+				<input class="form-control" id='project_life' ng-model="parameters.project_life" ></input>
+			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='nameplate_MW' >Nameplate MW</label>
-			<input class="form-control" id='nameplate_MW' ng-model="parameters.nameplate_MW"></input>
+			<form ng-submit="calculate()">
+				<label for='nameplate_MW' >Nameplate MW</label>
+				<input class="form-control" id='nameplate_MW' ng-model="parameters.nameplate_MW"></input>
+			</form>
+		</fieldset>
+		<fieldset class="form-group">
+			<form ng-submit="calculate()">
+				<label for='av_psh_per_day'>Average Peak Sun Hours per Day</label>
+				<input class="form-control" id='av_psh_per_day' ng-model="parameters.av_psh_per_day"></input>
+			</form>
+		</fieldset>
+
+		</div>
+		
+		<div class="col-md-4">
+		<fieldset class="form-group">
+			<form ng-submit="calculate()">
+				<label for='module_cost' >Module Cost ($/W)</label>
+				<input class="form-control" id='module_cost' ng-model="parameters.module_cost"></input>
+			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='module_cost' >Module Cost ($/W)</label>
-			<input class="form-control" id='module_cost' ng-model="parameters.module_cost"></input>
+			<form ng-submit="calculate()">
+				<label for='inverter_cost' >Inverter Cost ($/W)</label>
+				<input class="form-control" id='inverter_cost' ng-model="parameters.inverter_cost"></input>
+			</form>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<form ng-submit="calculate()">
+				<label for='bos_cost' >BOS Cost ($/W)</label>
+				<input class="form-control" id='bos_cost' ng-model="parameters.bos_cost"></input>
+			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='inverter_cost' >Inverter Cost ($/W)</label>
-			<input class="form-control" id='inverter_cost' ng-model="parameters.inverter_cost"></input>
+			<form ng-submit="calculate()">
+				<label for='operation_maintenance_fixed' >Yearly Fixed O&M Cost ($)</label>
+				<input class="form-control" id='operation_maintenance_fixed' ng-model="parameters.operation_maintenance_fixed">
+			</form></input>
 		</fieldset>
+
 		
-		<fieldset class="form-group">
-		<label for='operation_maintenance_fixed' >Yearly Fixed O&M Cost ($)</label>
-			<input class="form-control" id='operation_maintenance_fixed' ng-model="parameters.operation_maintenance_fixed"></input>
-		</fieldset>
 		</div>
 		<div class="col-md-4">
 		<fieldset class="form-group">
-			<label for='plant_derating_factor' >Plant Derating Factor (fraction)</label>
-			<input class="form-control" id='plant_derating_factor' ng-model="parameters.plant_derating_factor"></input>
+			<form ng-submit="calculate()">
+				<label for='plant_derating_factor' >Plant Derating Factor (fraction)</label>
+				<input class="form-control" id='plant_derating_factor' ng-model="parameters.plant_derating_factor"></input>
+			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='plant_degradation_factor' >Plant Degradation Factor (fraction)</label>
-			<input class="form-control" id='plant_degradation_factor' ng-model="parameters.plant_degradation_factor"></input>
+			<form ng-submit="calculate()">
+				<label for='plant_degradation_factor' >Plant Degradation Factor (fraction)</label>
+				<input class="form-control" id='plant_degradation_factor' ng-model="parameters.plant_degradation_factor">
+			</form></input>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='discount_rate' >Discount Rate (fraction) </label>
-			<input class="form-control" id='discount_rate' ng-model="parameters.discount_rate"></input>
+			<form ng-submit="calculate()">
+				<label for='discount_rate' >Discount Rate (fraction) </label>
+				<input class="form-control" id='discount_rate' ng-model="parameters.discount_rate"></input>
+			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
-			<label for='corporate_tax' >Corporate Tax (fraction)</label>
-			<input class="form-control" id='corporate_tax' ng-model="parameters.corporate_tax"></input>
+			<form ng-submit="calculate()">
+				<label for='corporate_tax' >Corporate Tax (fraction)</label>
+				<input class="form-control" id='corporate_tax' ng-model="parameters.corporate_tax"></input>
+			</form>
 		</fieldset>
 		
-		<fieldset class="form-group">
-			<label for='av_psh_per_day' >Average Peak Sun Hours per Day</label>
-			<input class="form-control" id='av_psh_per_day' ng-model="parameters.av_psh_per_day"></input>
-		</fieldset>
+		
 
 		</div>
 		
 	</div>
 	<div class="col-md-4">
-	<button class="btn btn-default" ng-click="calculate()">Calculate</button>
-	<h4>LCOE: {{lcoe}} $/MWh</h4>
+	<button class="btn btn-success" ng-click="calculate()">Calculate</button>
+	<h4>LCOE: {{lcoe | number: 2}} $/MWh</h4>
 	</div>
   		
 </div>
