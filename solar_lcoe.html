@@ -1,5 +1,5 @@
 <head>
-	<title>LCOE Calculator</title>
+	<title>Love-tech Engineering</title>
 
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -24,10 +24,10 @@
 <div class="container" ng-app="lcoe-calculator" ng-controller="LCOE-Calculator">
 
 	<header>
-		<h1><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>     Solar PV LCOE Calculator</h1>
+		<h1><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>Love-Tech Solar-Solution</h1>
 	</header>
 
-	<p>This calculator finds the estimated levelised cost of electricity (LCOE) for utility-scale photovoltaic power plants.</br> Source code for this website and the calculator can be found <a href="https://github.com/lukasmarshall/solar-lcoe">here.</a></p>
+	<p>This calculator finds the estimated levelised cost of electricity (LCOE) for utility-scale photovoltaic power plants.</br> Further Information can be found on this link. <a href="https://github.com/dilas12345/solar-lcoe">.</a></p>
 	</br>
 
 	<div class="input-group">
@@ -57,28 +57,28 @@
 		<div class="col-md-4">
 		<fieldset class="form-group">
 			<form ng-submit="calculate()">
-				<label for='module_cost' >Module Cost ($/W)</label>
+				<label for='module_cost' >Module Cost (Naira/W)</label>
 				<input class="form-control" id='module_cost' ng-model="parameters.module_cost"></input>
 			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
 			<form ng-submit="calculate()">
-				<label for='inverter_cost' >Inverter Cost ($/W)</label>
+				<label for='inverter_cost' >Inverter Cost (Naira/W)</label>
 				<input class="form-control" id='inverter_cost' ng-model="parameters.inverter_cost"></input>
 			</form>
 		</fieldset>
 
 		<fieldset class="form-group">
 			<form ng-submit="calculate()">
-				<label for='bos_cost' >BOS Cost ($/W)</label>
+				<label for='bos_cost' >BOS Cost (Naira/W)</label>
 				<input class="form-control" id='bos_cost' ng-model="parameters.bos_cost"></input>
 			</form>
 		</fieldset>
 		
 		<fieldset class="form-group">
 			<form ng-submit="calculate()">
-				<label for='operation_maintenance_fixed' >Yearly Fixed O&M Cost ($)</label>
+				<label for='operation_maintenance_fixed' >Yearly Fixed O&M Cost (Naira)</label>
 				<input class="form-control" id='operation_maintenance_fixed' ng-model="parameters.operation_maintenance_fixed">
 			</form></input>
 		</fieldset>
@@ -121,7 +121,7 @@
 	</div>
 	<div class="col-md-4">
 	<button class="btn btn-success" ng-click="calculate()">Calculate</button>
-	<h4>LCOE: {{lcoe | number: 2}} $/MWh</h4>
+	<h4>LCOE: {{lcoe | number: 2}} Naira/MWh</h4>
 	</div>
   		
 </div>
